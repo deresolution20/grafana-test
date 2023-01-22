@@ -79,14 +79,42 @@ Step 3: with the stack deployed, I logged into Prometheus at http://localhost:90
 
 
 
+Step 4: with the exporters working, I logged into Grafana at http://0.0.0.0:3000/ and added the Prometheusdb as a database source.
+
+![grafana datasource-setup](https://user-images.githubusercontent.com/85902399/213945924-94981252-681b-4d42-8aa0-ca9ea9f65c25.png)
+
+<br/>
+<br/>
+
+Step 5: with the datasource set, I went to Grafana's website and grabbed some pre-built dashboards for node exporter and cadvisor
+
+https://grafana.com/grafana/dashboards/1860-node-exporter-full/
+https://grafana.com/grafana/dashboards/14282-cadvisor-exporter/
+
+I then imported those dashboards using the import function on Grafana.  Cadvisor is pulling data on the containers
+
+<br/>
+Cadvisor dashboard
+
+![cadvisor-dashboard](https://user-images.githubusercontent.com/85902399/213946040-827221cf-227c-4e6e-87e0-034282c62106.png)
+
+<br/>
+<br/>
+
+Node exporter dashboard
+
+
+
+![node-explorer-dashboard](https://user-images.githubusercontent.com/85902399/213946083-180ff8da-7454-4e65-b1c6-8f7296830706.png)
 
 
 
 
 
-<br />
 
-<br />
+
+
+
 
 
 
