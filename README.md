@@ -25,26 +25,33 @@ grafana test deploy with prometheus using docker containers
 
 
 
-<h2>Environments Used </h2>
+<h2>Environments and tools Used </h2>
 
 
 
 
-- <b>Ubuntu 22</b>
-
-
+- <b>Ubuntu 22.04</b>
+- <b>Docker version 20.10.23, build 7155243</b>
+- <b> container images: Grafana:latest, prometheus:latest, quay.io/prometheus/node-exporter:latest, gcr.io/cadvisor/cadvisor<b>
+- <b> container images were found using the docker hub repo - example: https://hub.docker.com/r/grafana/grafana<b>
 
 <h2>Program walk-through:</h2>
 
 
 
-First step:  I already had Docker installed and Docker compose, so I setup portainer
+<b>Step 1<b/>:  
+  
+As I have been learning Docker for the past month and already have it installed locally, I decided to try building a docker stack using pre-built images with docker-compose and I've been wanting to test out Portainer as a GUI for container management so I decided to set that up as well.  I like the idea of using containers for test labs and will be utilizing this tool a lot more in the future.  One potential downside is persistent logs after the container is destroyed.  I need to set that up after reading docs.  https://grafana.com/docs/grafana/latest/setup-grafana/configure-docker/
 
 
+Anyways, I want to move on and get the stack deployed so I started by creating the portainer container using documentation from portainer:
+  https://docs.portainer.io/start/install/server/docker/linux
+  
+```  
 docker volume create portainer_data
 
 docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
-
+```
 
 
 once that was complete, I logged in using web browser at http://localhost:9000 and created the login credentials
@@ -53,8 +60,8 @@ once that was complete, I logged in using web browser at http://localhost:9000 a
 
 Step 2:
 
-I created the stack by building a docker compose file and uploading it to Portainer and then deploying the stack.
-The docker-compose.yml file includes containers for both grafana and prometheus as well as two exporters to pull data in order to build a dashboard in Grafana.  See docker-compose.yml file.
+I created the stack by building a docker compose file and uploading it to Portainer and then deployed the stack.
+The docker-compose.yml file includes containers for both grafana and prometheus as well as two exporters to pull data in order to build a dashboard in Grafana.  I chose node exporter to log my machine metrics, and cadvisor to log the container metrics. See docker-compose.yml file.
 
 
 
