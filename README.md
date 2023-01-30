@@ -29,7 +29,6 @@ grafana test deploy with prometheus using docker containers
 
 
 
-- <b></b>
 
 - <b>Ubuntu 22</b>
 
@@ -89,6 +88,13 @@ Step 4: with the exporters working, I logged into Grafana at http://0.0.0.0:3000
 Step 5: with the datasource set, I went to Grafana's website and grabbed some pre-built dashboards for node exporter and cadvisor
 
 https://grafana.com/grafana/dashboards/1860-node-exporter-full/
+
+<br/>
+
+<br/>
+
+
+
 https://grafana.com/grafana/dashboards/14282-cadvisor-exporter/
 
 I then imported those dashboards using the import function on Grafana.  Cadvisor is pulling data on the containers
