@@ -44,7 +44,8 @@ Grafana test deploy with Prometheus using docker containers with exporters: Node
 
 <b>Prometheus</b>
   - https://hub.docker.com/r/prom/prometheus
-  - https://logz.io/blog/prometheus-tutorial-docker-monitoring/#systemdocker 
+  - https://logz.io/blog/prometheus-tutorial-docker-monitoring/#systemdocker
+  - https://prometheus.io/docs/prometheus/latest/configuration/configuration/
 <br/>
 <br/>
 
@@ -86,9 +87,14 @@ once that was complete, I logged in using web browser at http://localhost:9000 a
 <b>Step 2:</b>
 
 I created the stack by building a docker compose file and uploading it to Portainer and then deployed the stack.
-The docker-compose.yml file includes containers for both grafana and prometheus as well as two exporters to pull data in order to build a dashboard in Grafana.  I chose node exporter to log my machine metrics, and cadvisor to log the container metrics. 
+The docker-compose.yml file includes containers for both grafana and prometheus as well as two exporters to pull data in order to build a dashboard in Grafana.  I chose node exporter to log my machine metrics, and cadvisor to log the container metrics. See docker-compose.yml file.
 
-See docker-compose.yml file.
+<br/>
+<br/>
+
+One thing I needed was to create a config file for prometheus and edit it to add the exporters.  I found the config docs online: (https://prometheus.io/docs/prometheus/latest/configuration/configuration/) and since I've never used Prometheus, I checked their documentation for a guide and found one on how to add it to the docker-compose file and configure the prometheus.yml config file scrape_configs for the exporters (https://prometheus.io/docs/guides/cadvisor/)  With this info, I was able to create the prometheus.yml file and save it locally to /etc/prometheus/ and set the docker-compose file to use that when building the container. See prometheus.yml file.
+
+
 
 
 
