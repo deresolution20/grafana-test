@@ -61,8 +61,9 @@ grafana-storage:/var/lib/grafana -p 3000:3000 grafana/grafana
 ```
 edit: found the docs for adding it to the compose file, so if I get some extra time, I'll try to test this out.
 
+![Screenshot from 2023-01-30 13-23-42](https://user-images.githubusercontent.com/85902399/215604315-1f093b73-5c9c-4c05-82c1-4fe46202f5bb.png)
 
-![Alt text](../../../Pictures/Screenshots/Screenshot%20from%202023-01-30%2013-23-42.png)
+
 
 
   https://grafana.com/docs/grafana/latest/setup-grafana/configure-docker/
@@ -167,14 +168,50 @@ I then imported those dashboards using the import function on Grafana.  Cadvisor
 <br/>
 <br/>
 
-One issue I ran into when deploying the stack in portainer was a "request failed with status code 500" in portainer for the grafana image.  
+One issue I ran into today (1/30/2023) when deploying the stack in portainer was a "request failed with status code 500" in portainer for the grafana image. This did not happen the first time I deployed this last week so something has probably changed in my local environment. 
 
 I checked the logs inside portainer for Grafana, but did not see anything really stand out.  I checked the portainer website (https://portal.portainer.io/knowledge/kb-search-results?term=error+code+500) for the issue but really wasn't finding anything concrete so I checked the subreddit for Portainer (http://reddit/r/portainer) and a few people mentioned the issue happens because of a port conflict.
 
-I tried editing the docker compose file first by editing it to use port 3001, but Grafana still wanted to use port 3000. 
+I tried editing the docker compose file first by editing it to use port 3001, but Grafana still wanted to use port 3000. I checked the docker image details in portainer and could see that it was setting port 3000 as the default exposed port.
+
+![Screenshot from 2023-01-30 14-49-35](https://user-images.githubusercontent.com/85902399/215604123-32342614-cfbd-4b91-8fd7-bdc248212746.png)
 
 
-As time is a factor and I need time to prepare this for presentation, I decided to just change the port in the Grafana image by editing the defaults.ini file
+As time is a factor and I need time to prepare this for presentation, I decided to just change the port in the Grafana image by editing the Grafana defaults.ini file inside the docker image.  I can come back to the port issue later.
+
+<br/>
+<br/>
+
+I used Dockers docs and found the command used to run commands inside a container (https://docs.docker.com/engine/reference/commandline/exec/).  With this, I was able to run bash inside the container because I wanted to edit the grafana defaults.ini file and change the port using vi. I ran into another issue where I did not have root access to edit the file, and attempted to install sudo to the image, but that failed. It looks like this is an issue people run into and I was able to find this on Grafana's site (https://community.grafana.com/t/how-to-find-grafana-ini-file-in-docker-container/42898/2) so I re-ran docker exec as root and was able to continue.
+
+
+![Screenshot from 2023-01-30 11-46-05](https://user-images.githubusercontent.com/85902399/215606431-babd4bfa-2b8e-4fb7-8abb-7b072795bca6.png)
+
+
+```
+sudo docker exec -u root -it 9d63f85d23cf /bin/bash
+```
+
+
+<br/>
+<br/>
+
+I edited the default.ini file in the conf directory using vi.
+
+![Screenshot from 2023-01-30 11-41-00](https://user-images.githubusercontent.com/85902399/215607171-e8bcad4e-17f4-4b4c-a2fc-e02405762b19.png)
+
+
+
+<br/>
+<br/>
+
+![Screenshot from 2023-01-30 11-41-30](https://user-images.githubusercontent.com/85902399/215606846-403c4de8-b26e-4668-b95e-bd5a2cf162bf.png)
+
+
+<br/>
+<br/>
+
+Once I had the file saved and image updated I was able to deploy the container and move on to setting up the rest of the stack.
 
 
 
