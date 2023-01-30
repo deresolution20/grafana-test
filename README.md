@@ -170,7 +170,7 @@ I then imported those dashboards using the import function on Grafana.  Cadvisor
 
 One issue I ran into today (1/30/2023) when deploying the stack in portainer was a "request failed with status code 500" in portainer for the grafana image. This did not happen the first time I deployed this last week so something has probably changed in my local environment. 
 
-I checked the logs inside portainer for Grafana, but did not see anything really stand out.  I checked the portainer website (https://portal.portainer.io/knowledge/kb-search-results?term=error+code+500) for the issue but really wasn't finding anything concrete so I checked the subreddit for Portainer (http://reddit/r/portainer) and a few people mentioned the issue happens because of a port conflict.
+I checked the logs inside portainer for Grafana, but did not see anything really stand out.  I checked the portainer website (https://portal.portainer.io/knowledge/kb-search-results?term=error+code+500) for the issue but really wasn't finding anything concrete so I checked the subreddit for Portainer (https://www.reddit.com/r/portainer/) and a few people mentioned the issue happens because of a port conflict.
 
 I tried editing the docker compose file first by editing it to use port 3001, but Grafana still wanted to use port 3000. I checked the docker image details in portainer and could see that it was setting port 3000 as the default exposed port.
 
@@ -216,9 +216,27 @@ Once I had the file saved and image updated I was able to deploy the container a
 
 
 
+<h2>Continued troubleshooting</h2>
+
+When I completed the main task of setting up Grafana and some dashboards, I went back to investigating the port issue.
+
+I used netstat to check the ports that were assigned currently:
+
+```
+netstat -ltp
+```
+
+upon inspection, I realized that I had Grafana running locally already and it was using port 3000.  I had installed Grafana OSS before deciding use containers, and the service was running which is why my container couldn't use that port.  I went back and edited the defaults.ini file in the docker image and changed the port back to 3000, saved it and redeployed the stack in portainer and verified everything is back up and grafana is now using port 3000.
+
+derp, lol.
+
+<br/>
 
 
+![Screenshot from 2023-01-30 15-49-13](https://user-images.githubusercontent.com/85902399/215615894-19637664-1f97-4cb2-9011-79626a970ee1.png)
 
+<br/>
+<br/>
 
 
 
