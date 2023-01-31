@@ -232,7 +232,7 @@ I used netstat to check the ports that were assigned currently:
 netstat -ltp
 ```
 
-upon inspection, I realized that I had Grafana running locally already and it was using port 3000.  I had installed Grafana OSS before deciding use containers, and the service was running which is why my container couldn't use that port.  I went back and edited the defaults.ini file in the docker image and changed the port back to 3000, saved it and redeployed the stack in portainer and verified everything is back up and grafana is now using port 3000.
+upon inspection, I realized that I had Grafana running locally already and it was using port 3000.  I had installed Grafana OSS before deciding use containers, and the service was running which is why my container couldn't use that port. I stopped the service from running, verified it was not using that port was now free using netstat, and then went back and edited the defaults.ini file in the docker image and changed the port back to 3000, saved it and redeployed the stack in portainer and verified everything is back up and grafana is now using port 3000.
 
 derp, lol.
 
