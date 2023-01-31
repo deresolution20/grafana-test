@@ -249,7 +249,7 @@ derp, lol.
 
 <h2>Grafana Cloud Dashboard</h2>
 
-Since I had some extra time, I decided to test out Grafana Cloud and build a dashboard this time instead of importing one.  I found a great youtube series from one of the co-creators of Prometheus, Julius Volz.  Prometheus has a demo server running that is open and anyone can use it as a data source to test. (https://demo.promlabs.com)
+Since I had some extra time, I decided to test out Grafana Cloud and build a dashboard this time instead of importing one.  I found a great youtube series from one of the co-creators of Prometheus, Julius Volz(https://www.youtube.com/watch?v=EGgtJUjky8w).  Prometheus has a demo server running that is open and anyone can use it as a data source to test. (https://demo.promlabs.com). 
 
 <b>Step 1:</b> created the first dashboard which was a basic api request dashboard
 - I set the dashboard to a time series
