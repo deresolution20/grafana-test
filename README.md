@@ -247,6 +247,87 @@ derp, lol.
 
 
 
+<h2>Grafana Cloud Dashboard</h2>
+
+Since I had some extra time, I decided to test out Grafana Cloud and build a dashboard this time instead of importing one.  I found a great youtube series from one of the co-creators of Prometheus, Julius Volz.  Prometheus has a demo server running that is open and anyone can use it as a data source to test. (https://demo.promlabs.com)
+
+<b>Step 1:</b> created the first dashboard which was a basic api request dashboard
+- I set the dashboard to a time series
+- Metric was set to api_request_duration_seconds
+- I was able to configure the Rate, using Sum by and set the Histogram quantile to .95
+
+
+<br/>
+<br/>
+
+![Screenshot from 2023-01-31 16-31-04](https://user-images.githubusercontent.com/85902399/215907942-42d7a46f-976d-4264-ba10-b52d3e8fe33c.png)
+
+
+<br/>
+<br/>
+
+<b>Step 2:</b> Second dashboard was a gauge dashboard to monitor the CPU threshold.
+- Gauge was selected as the type and this time, I used a custom query in promql
+
+<br/>
+
+![Screenshot from 2023-01-31 16-06-04](https://user-images.githubusercontent.com/85902399/215908345-bc4cfae0-63c0-4b0c-a907-774af0520f13.png)
+
+
+![Screenshot from 2023-01-31 16-38-34](https://user-images.githubusercontent.com/85902399/215908593-0a52694a-7504-485f-8f47-f667592fe0f1.png)
+
+<br/>
+<br/>
+
+<b>Step 3:</b> Third dashboard was a table to fetch the most recent method requests
+- since the time was the same, I was able to add a threshhold override for the time column to remove it.
+![Screenshot from 2023-01-31 16-09-04](https://user-images.githubusercontent.com/85902399/215908861-a42e1a06-a2f8-420c-987e-affc2b65afed.png)
+
+![Screenshot from 2023-01-31 16-10-46](https://user-images.githubusercontent.com/85902399/215908873-5a70096c-2bdc-47b2-b7a2-240ec5184212.png)
+![Screenshot from 2023-01-31 16-12-10](https://user-images.githubusercontent.com/85902399/215908877-f148e0a5-e7be-4ec3-84c6-afafaabcebc8.png)
+
+
+
+<br/>
+<br/>
+
+<b>Step 4:</b> Finally, I saved the Dashboard and set some rows to move the panels around and organize them
+
+![Screenshot from 2023-01-31 16-13-46](https://user-images.githubusercontent.com/85902399/215909040-392a4c15-a052-4adb-a49a-1d889e1ee79e.png)
+
+
+
+![Screenshot from 2023-01-31 16-14-29](https://user-images.githubusercontent.com/85902399/215909079-625c4bef-b7ad-4d2d-9565-47a713af4acb.png)
+
+
+<br/>
+<br/>
+
+I did not seem to run into any errors this time, but this was a good experience to actually build the dashboard
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
