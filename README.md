@@ -12,7 +12,7 @@ Grafana test deploy with Prometheus using docker containers with exporters: Node
 
 - Docker and Portainer
   - YAML for the Docker compose file
-- Grafana and Prometheusdb
+- Grafana and Prometheus
 
 
 <h2>Environments and tools Used </h2>
