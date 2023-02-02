@@ -233,7 +233,7 @@ I used netstat to check the ports that were assigned currently:
 netstat -ltp
 ```
 
-upon inspection, I realized that I had Grafana running locally already and it was using port 3000.  I had installed Grafana OSS before deciding use containers, and the service was running which is why my container couldn't use that port. I stopped the service from running, verified it was not using that port was now free using netstat, and then went back and edited the defaults.ini file in the docker image and changed the port back to 3000, saved it and redeployed the stack in portainer and verified everything is back up and grafana is now using port 3000.
+Upon inspection, I realized that I had Grafana running locally already and it was using port 3000.  I had installed Grafana OSS before deciding use containers, and the service was running which is why my container couldn't use that port. I stopped the service from running, verified it was not using that port was now free using netstat, and then went back and edited the defaults.ini file in the docker image and changed the port back to 3000, saved it and redeployed the stack in portainer and verified everything is back up and grafana is now using port 3000.
 
 
 <br/>
@@ -280,7 +280,7 @@ Since I had some extra time, I decided to test out Grafana Cloud and build a das
 <br/>
 
 <b>Step 3:</b> Third dashboard was a table to fetch the most recent method requests
-- since the time was the same, I was able to add a threshhold override for the time column to remove it.
+- Since the time was the same, I was able to add a threshhold override for the time column to remove it.
 ![Screenshot from 2023-01-31 16-09-04](https://user-images.githubusercontent.com/85902399/215908861-a42e1a06-a2f8-420c-987e-affc2b65afed.png)
 
 ![Screenshot from 2023-01-31 16-10-46](https://user-images.githubusercontent.com/85902399/215908873-5a70096c-2bdc-47b2-b7a2-240ec5184212.png)
