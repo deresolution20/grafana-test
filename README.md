@@ -307,6 +307,9 @@ I did not seem to run into any errors this time, but this was a good experience 
 
 Link to the dashboard is here:  https://deresolution20.grafana.net/d/6K8Z_IAVk/demo-dashboard?orgId=1&from=1675207074722&to=1675208874722
 
+<h2> Deploying it in aws using Terraform </h2>
+
+https://github.com/deresolution20/tf_ec2-grafana_prometheus_containers
 
 
 
