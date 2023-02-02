@@ -46,6 +46,7 @@ Grafana test deploy with Prometheus using docker containers with exporters: Node
   - https://hub.docker.com/r/prom/prometheus
   - https://logz.io/blog/prometheus-tutorial-docker-monitoring/#systemdocker
   - https://prometheus.io/docs/prometheus/latest/configuration/configuration/
+  - https://prometheus.io/docs/instrumenting/exporters/
 <br/>
 <br/>
 
