@@ -56,7 +56,7 @@ Grafana test deploy with Prometheus using docker containers with exporters: Node
 
 <b>Step 1</b>:  
   
-As I have been learning Docker for the past month and already have it installed locally, I decided to try building a docker stack using pre-built images with docker-compose and I've been wanting to test out Portainer as a GUI for container management so I decided to set that up as well.  I like the idea of using containers for test labs and will be utilizing this tool a lot more in the future.  One potential downside is persistent logs after the container is destroyed.  I need to set that up after reading docs, but a quick googlefu shows that one possibility is adding to the docker run command:
+As I have been learning Docker for the past month and already have it installed locally, I decided to try building a docker stack using pre-built images with docker-compose and I've been wanting to test out Portainer as a GUI for container management so I decided to set that up as well.  I like the idea of using containers for test labs and will be utilizing this tool a lot more in the future.  One potential downside is persistent logs after the container is destroyed.  I need to set that up after reading docs, but a quick google shows that one possibility is adding to the docker run command:
 ```
 grafana-storage:/var/lib/grafana -p 3000:3000 grafana/grafana
 ```
@@ -234,7 +234,6 @@ netstat -ltp
 
 upon inspection, I realized that I had Grafana running locally already and it was using port 3000.  I had installed Grafana OSS before deciding use containers, and the service was running which is why my container couldn't use that port. I stopped the service from running, verified it was not using that port was now free using netstat, and then went back and edited the defaults.ini file in the docker image and changed the port back to 3000, saved it and redeployed the stack in portainer and verified everything is back up and grafana is now using port 3000.
 
-derp, lol.
 
 <br/>
 
